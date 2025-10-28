@@ -1,0 +1,140 @@
+<html><head><title>Meteo Toni</title></head><body><!DOCTYPE html>
+
+<html lang="ca">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Webcams (Ventusky) — Oristà · La Torre d'Oristà · Sant Feliu Sasserra · Manresa · Vic</title>
+<style>
+    :root{--bg:#0f172a;--fg:#e2e8f0;--muted:#94a3b8;--card:#111827;--accent:#38bdf8;--ok:#34d399;--alt:#f59e0b;--windy:#ef4444}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:System-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+    header{position:sticky;top:0;background:linear-gradient(180deg,rgba(17,24,39,.95),rgba(17,24,39,.85));backdrop-filter:blur(6px);z-index:10;border-bottom:1px solid #1f2937}
+    .wrap{max-width:1100px;margin:0 auto;padding:12px 20px}
+    h1{margin:.2rem 0;font-size:1.3rem;font-weight:600}
+    p.small{margin:.2rem 0;color:var(--muted);font-size:.9rem}
+    .stack{display:grid;gap:16px;padding:16px}
+    .card{background:var(--card);border:1px solid #1f2937;border-radius:14px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+    .card header{position:relative;background:#0b1220;border:0}
+    .card h2{margin:0;font-size:1.05rem;padding:12px 14px}
+    .body{padding:0}
+    .frame{width:100%;height:560px;border:0;display:block}
+    .links{display:flex;gap:10px;flex-wrap:wrap;padding:10px 14px;background:#0b1220;border-top:1px solid #1f2937}
+    a.btn{display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;color:#0b1220;background:var(--accent);font-weight:600}
+    a.btn.alt{background:var(--ok)}
+    a.btn.warn{background:var(--alt);color:#111827}
+    a.btn.windy{background:var(--windy);color:#111827}
+    footer{color:var(--muted);text-align:center;padding:14px}
+    @media (max-width:640px){.frame{height:480px}}
+  </style>
+<script>
+    const REFRESH_MS = 300000; // 5 min
+    function refreshIframes(){
+      document.querySelectorAll('iframe').forEach(fr=>{
+        try{const u=new URL(fr.src); u.searchParams.set('_ts', Date.now()); fr.src=u.toString();}catch(e){}
+      });
+    }
+    setInterval(refreshIframes, REFRESH_MS);
+  </script>
+</head>
+<body style=""><h1 style="font-size: 3em; color: #ffffff; text-align: center; margin: 24px 12px;padding: 28px 16px;background: linear-gradient(135deg, #ff8a00 0%, #e52e71 50%, #4b6cb7 100%);border-radius: 16px;box-shadow: 0 8px 24px rgba(0,0,0,0.25);text-shadow: 0 2px 6px rgba(0,0,0,0.35);">Meteo Toni</h1>
+<header>
+<div class="wrap">
+<h1>Webcams (Ventusky) — Oristà · La Torre d'Oristà · Sant Feliu Sasserra · Manresa · Vic</h1>
+<p class="small">Webcams i mapes via Ventusky + botons (MeteOsona, 3Cat, Meteocat, AEMET, Windy). Manresa: mapa Ventusky + webcam Ajuntament/Meteoblue (fins ID pròpia Ventusky).</p>
+</div>
+</header>
+<main class="wrap">
+<section class="stack">
+<!-- Oristà -->
+<article class="card">
+<header><h2>Oristà — Webcam</h2></header>
+<div class="body">
+<iframe class="frame" src="https://www.ventusky.com/webcam-425184329" title="Webcam Oristà (Ventusky)"></iframe>
+</div>
+<div class="links">
+<a class="btn" href="https://www.meteosona.com/estacio/Orista1/" rel="noopener" target="_blank">Condicions en viu (MeteOsona)</a>
+<a class="btn alt" href="https://www.meteo.cat/prediccio/municipal/081516" rel="noopener" target="_blank">Meteocat</a>
+<a class="btn warn" href="https://www.aemet.es/es/eltiempo/prediccion/municipios/orista-id08151" rel="noopener" target="_blank">AEMET</a>
+<a class="btn windy" href="https://www.windy.com/?41.95,2.03,10" rel="noopener" target="_blank">Obrir a Windy</a>
+</div>
+</article>
+<!-- La Torre d'Oristà -->
+<article class="card">
+<header><h2>La Torre d'Oristà — Webcam</h2></header>
+<div class="body">
+<iframe class="frame" src="https://www.ventusky.com/webcam-191849618" title="Webcam La Torre d'Oristà (Ventusky)"></iframe>
+</div>
+<div class="links">
+<a class="btn" href="https://www.meteosona.com/estacio/La_Torre_Orista/" rel="noopener" target="_blank">Condicions en viu (MeteOsona)</a>
+<a class="btn alt" href="https://www.meteo.cat/prediccio/municipal/081516" rel="noopener" target="_blank">Meteocat</a>
+<a class="btn warn" href="https://www.aemet.es/es/eltiempo/prediccion/municipios/orista-id08151" rel="noopener" target="_blank">AEMET</a>
+<a class="btn windy" href="https://www.windy.com/?41.95,2.03,10" rel="noopener" target="_blank">Obrir a Windy</a>
+</div>
+</article>
+<!-- Sant Feliu Sasserra -->
+<article class="card">
+<header><h2>Sant Feliu Sasserra — Mapa i condicions</h2></header>
+<div class="body">
+<iframe class="frame" src="https://www.ventusky.com/41.945;2.021" title="Sant Feliu Sasserra (Ventusky)"></iframe>
+</div>
+<div class="links">
+<a class="btn alt" href="https://www.meteo.cat/prediccio/municipal/082129" rel="noopener" target="_blank">Meteocat</a>
+<a class="btn warn" href="https://www.aemet.es/ca/eltiempo/prediccion/municipios/sant-feliu-sasserra-id08212" rel="noopener" target="_blank">AEMET</a>
+<a class="btn" href="https://www.meteoblue.com/en/weather/webcams/sant-feliu-sasserra_spain_3110638" rel="noopener" target="_blank">Webcams (Meteoblue)</a>
+<a class="btn windy" href="https://www.windy.com/?41.945,2.021,10" rel="noopener" target="_blank">Obrir a Windy</a>
+</div>
+</article>
+<!-- Manresa (sense ID de webcam a Ventusky; mapa + enllaços) -->
+<article class="card">
+<header><h2>Manresa — Mapa (Ventusky) + webcams</h2></header>
+<div class="body">
+<iframe class="frame" src="https://www.ventusky.com/manresa" title="Manresa (Ventusky)"></iframe>
+</div>
+<div class="links">
+<a class="btn alt" href="https://www.manresa.cat/web/webcam" rel="noopener" target="_blank">Webcam Plaça Major (Ajuntament)</a>
+<a class="btn" href="https://www.meteoblue.com/en/weather/webcams/manresa_spain_3117533" rel="noopener" target="_blank">Webcams a prop (Meteoblue)</a>
+<a class="btn" href="https://www.3cat.cat/3catinfo/el-temps/camera/manresa/26/" rel="noopener" target="_blank">Webcam 3CatInfo</a>
+<a class="btn alt" href="https://meteo.cat/prediccio/municipal/081136" rel="noopener" target="_blank">Meteocat</a>
+<a class="btn warn" href="https://www.aemet.es/es/eltiempo/prediccion/municipios/manresa-id08113" rel="noopener" target="_blank">AEMET</a>
+<a class="btn windy" href="https://www.windy.com/?41.728,1.823,10" rel="noopener" target="_blank">Obrir a Windy</a>
+</div>
+</article>
+<!-- Vic (webcam Ventusky · MeteOsona) -->
+<article class="card">
+<header><h2>Vic — Webcam (Ventusky · MeteOsona)</h2></header>
+<div class="body">
+<iframe class="frame" src="https://www.ventusky.com/webcam-872499627" title="Vic Plaça (Ventusky · meteosona)"></iframe>
+</div>
+<div class="links">
+<a class="btn alt" href="https://www.ventusky.com/webcam-872499627" rel="noopener" target="_blank">Obrir webcam a Ventusky</a>
+<a class="btn" href="https://www.meteosona.com/estacio/Vic/" rel="noopener" target="_blank">Condicions en viu (MeteOsona)</a>
+<a class="btn" href="https://www.3cat.cat/3catinfo/el-temps/camera/vif/5/" rel="noopener" target="_blank">Webcam 3CatInfo (Vic)</a>
+<a class="btn" href="https://meteo.cat/prediccio/municipal/082981" rel="noopener" target="_blank">Meteocat</a>
+<a class="btn warn" href="https://www.aemet.es/es/eltiempo/prediccion/municipios/vic-id08298" rel="noopener" target="_blank">AEMET</a>
+<a class="btn windy" href="https://www.windy.com/?41.93,2.25,10" rel="noopener" target="_blank">Obrir a Windy</a>
+</div>
+</article>
+<!-- Altres poblacions — Lluçanès -->
+<article class="card">
+<header><h2 style="padding:12px 14px">Altres poblacions — Lluçanès (enllaços ràpids)</h2></header>
+<div class="body" style="padding:12px">
+<ul style="margin:0;padding-left:18px;columns:2">
+<li><a href="https://www.meteosona.com/zones/webcams#llucanes" rel="noopener" target="_blank">Webcams Lluçanès (MeteOsona)</a></li>
+<li><a href="https://www.ventusky.com/42.036;2.098" rel="noopener" target="_blank">Alpens — mapa/condicions (Ventusky)</a></li>
+<li><a href="https://www.ventusky.com/42.007;2.029" rel="noopener" target="_blank">Olost — mapa/condicions (Ventusky)</a></li>
+<li><a href="https://www.ventusky.com/42.001;2.039" rel="noopener" target="_blank">Prats de Lluçanès — mapa/condicions (Ventusky)</a></li>
+<li><a href="https://www.ventusky.com/41.998;2.070" rel="noopener" target="_blank">Sant Boi de Lluçanès — mapa/condicions (Ventusky)</a></li>
+<li><a href="https://www.ventusky.com/42.045;2.030" rel="noopener" target="_blank">Lluçà — mapa/condicions (Ventusky)</a></li>
+<li><a href="https://www.ventusky.com/41.999;2.198" rel="noopener" target="_blank">Sant Bartomeu del Grau — mapa/condicions (Ventusky)</a></li>
+<li><a href="https://www.ventusky.com/42.040;2.111" rel="noopener" target="_blank">Sobremunt — mapa/condicions (Ventusky)</a></li>
+</ul>
+</div>
+</article>
+</section>
+</main>
+<footer>
+    Fonts: Ventusky (mapes/webcams), MeteOsona (dades en viu), 3Cat (webcams), Meteocat i AEMET (prediccions), Ajuntament de Manresa (webcam Plaça Major), Meteoblue (agregador). Ús personal.
+  </footer>
+</body>
+</html></body></html>
