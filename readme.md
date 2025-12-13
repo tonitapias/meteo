@@ -6,7 +6,7 @@ Benvinguts al meu panell de control meteorològic personal ("Dashboard"). Aquest
 
 Pots consultar la previsió i les webcams en temps real aquí:
 
-[**👉 Clica aquí per obrir Meteo Toni**](https:/tonitapias.github.io/meteo/)
+[**👉 Clica aquí per obrir Meteo Toni**](https://tonitapias.github.io/meteo/)
 
 ## **🚀 Què ofereix aquesta web?**
 
