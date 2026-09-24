@@ -12,8 +12,8 @@ Pots consultar la previsió i les webcams en temps real aquí:
 
 He dissenyat aquesta pàgina per agregar diverses fonts de dades en una interfície neta, ràpida i adaptada a mòbils:
 
-* **Webcams en viu:** Connexions directes a càmeres de Ventusky i ajuntaments locals (Oristà, Vic, Manresa, etc.) per veure el cel actual.  
-* **Mapes interactius:** Previsions de vent i temperatura incrustades via **Windy** i **Ventusky**.  
+* **Webcams en viu:** Imatges directes de les càmeres de **MeteOsona** (Oristà, La Torre d'Oristà, Vic), que es refresquen soles cada 5 minuts, i enllaços a les d'ajuntaments i 3Cat (Manresa, Vic).  
+* **Mapes interactius:** Previsions de vent i temperatura incrustades via **Windy**.  
 * **Dades oficials:** Accés ràpid a les prediccions municipals oficials del **Meteocat** i avisos de l'**AEMET**.  
 * **Panell Lluçanès:** Una secció especial amb enllaços directes a la predicció oficial de cada poble.
 
@@ -38,7 +38,6 @@ Aquest projecte és un agregador d'ús personal. Tot el mèrit de les dades i im
 
 * [Meteocat](https://www.meteo.cat) (Servei Meteorològic de Catalunya)  
 * [Windy](https://www.windy.com)  
-* [Ventusky](https://www.ventusky.com)  
 * [MeteOsona](https://www.meteosona.com)  
 * [AEMET](https://www.aemet.es)  
 * CCMA (3Cat) i Ajuntaments locals.

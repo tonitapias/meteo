@@ -171,6 +171,41 @@
             display: block;
         }
 
+        /* Webcams: imatge directa de MeteOsona sencera, sobre un fons difuminat de la mateixa imatge */
+        .webcam {
+            display: block;
+            overflow: hidden;
+        }
+
+        .webcam::before {
+            content: '';
+            position: absolute;
+            inset: -24px;
+            background: var(--fons) center / cover no-repeat;
+            filter: blur(18px) brightness(0.5);
+        }
+
+        .webcam img {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .webcam.error img { visibility: hidden; }
+
+        .webcam.error::after {
+            content: 'Imatge no disponible ara mateix';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
         /* Buttons & Actions */
         .actions {
             padding: 1rem;
@@ -257,6 +292,7 @@
             .grid { grid-template-columns: 1fr; }
             .brand-title { font-size: 1.8rem; }
             .frame-wrapper { height: 320px; } /* Més baixet en mòbil */
+            .frame-wrapper.webcam { height: auto; aspect-ratio: 2560 / 1504; } /* Una sola columna: la webcam, a la seva proporció */
             .actions { flex-direction: column; } /* Botons un a sota l'altre en mòbil per clics fàcils */
             .btn { width: 100%; }
         }
@@ -280,9 +316,9 @@
                 <h2>Oristà</h2>
                 <span class="live-badge">En viu</span>
             </div>
-            <div class="frame-wrapper">
-                <iframe loading="lazy" src="https://www.ventusky.com/webcam-425184329" title="Webcam Oristà"></iframe>
-            </div>
+            <a class="frame-wrapper webcam" href="https://www.meteosona.com/static/estacions/images/webcams/Orista1.jpg" target="_blank" title="Obre la imatge a mida completa" style="--fons: url('https://www.meteosona.com/static/estacions/images/webcams/Orista1.jpg')">
+                <img loading="lazy" src="https://www.meteosona.com/static/estacions/images/webcams/Orista1.jpg" alt="Webcam d'Oristà (MeteOsona)" onerror="this.parentElement.classList.add('error')">
+            </a>
             <div class="actions">
                 <a class="btn btn-meteosona" href="https://www.meteosona.com/estacio/Orista1/" target="_blank">MeteOsona</a>
                 <a class="btn btn-meteo" href="https://www.meteo.cat/prediccio/municipal/081516" target="_blank">Meteocat</a>
@@ -297,9 +333,9 @@
                 <h2>La Torre d'Oristà</h2>
                 <span class="live-badge">En viu</span>
             </div>
-            <div class="frame-wrapper">
-                <iframe loading="lazy" src="https://www.ventusky.com/webcam-191849618" title="Webcam La Torre"></iframe>
-            </div>
+            <a class="frame-wrapper webcam" href="https://www.meteosona.com/static/estacions/images/webcams/La_Torre_Orista.jpg" target="_blank" title="Obre la imatge a mida completa" style="--fons: url('https://www.meteosona.com/static/estacions/images/webcams/La_Torre_Orista.jpg')">
+                <img loading="lazy" src="https://www.meteosona.com/static/estacions/images/webcams/La_Torre_Orista.jpg" alt="Webcam de la Torre d'Oristà (MeteOsona)" onerror="this.parentElement.classList.add('error')">
+            </a>
             <div class="actions">
                 <a class="btn btn-meteosona" href="https://www.meteosona.com/estacio/La_Torre_Orista/" target="_blank">MeteOsona</a>
                 <a class="btn btn-meteo" href="https://www.meteo.cat/prediccio/municipal/081516" target="_blank">Meteocat</a>
@@ -347,9 +383,9 @@
                 <h2>Vic</h2>
                 <span class="live-badge">En viu</span>
             </div>
-            <div class="frame-wrapper">
-                <iframe loading="lazy" src="https://www.ventusky.com/webcam-872499627" title="Webcam Vic"></iframe>
-            </div>
+            <a class="frame-wrapper webcam" href="https://www.meteosona.com/static/estacions/images/webcams/VicPlaca.jpg" target="_blank" title="Obre la imatge a mida completa" style="--fons: url('https://www.meteosona.com/static/estacions/images/webcams/VicPlaca.jpg')">
+                <img loading="lazy" src="https://www.meteosona.com/static/estacions/images/webcams/VicPlaca.jpg" alt="Webcam de la Plaça Major de Vic (MeteOsona)" onerror="this.parentElement.classList.add('error')">
+            </a>
             <div class="actions">
                 <a class="btn btn-meteosona" href="https://www.meteosona.com/estacio/Vic/" target="_blank">MeteOsona</a>
                 <a class="btn btn-outline" href="https://www.3cat.cat/3catinfo/el-temps/camera/vif/5/" target="_blank">3Cat</a>
@@ -394,26 +430,46 @@
 </main>
 
 <footer>
-    <p>Agregador personal. Fonts originals: Ventusky, Windy, MeteOsona, 3Cat, Meteocat, AEMET, Ajuntaments.</p>
+    <p>Agregador personal. Fonts originals: MeteOsona, Windy, 3Cat, Meteocat, AEMET, Ajuntaments.</p>
     <p>© 2025–<span id="any-actual">2026</span> Meteo Toni</p>
 </footer>
 
 <script>
-    // Refresca les càmeres cada 5 minuts (300.000 ms) sense recarregar la pàgina
-    const REFRESH_MS = 300000; 
-    function refreshIframes(){
-        document.querySelectorAll('iframe').forEach(fr => {
-            try {
-                // Afegim un timestamp per forçar que la imatge no vingui de la memòria cau
-                const u = new URL(fr.src); 
-                u.searchParams.set('_ts', Date.now()); 
-                fr.src = u.toString();
-            } catch(e) { 
-                console.log("Error refrescant: " + e); 
-            }
+    // Refresca les webcams cada 5 minuts (300.000 ms) sense recarregar la pàgina.
+    // Els mapes de Windy no es toquen: no cal i es perdria el zoom.
+    const REFRESH_MS = 300000;
+    let lastRefresh = Date.now();
+
+    function refreshWebcams(){
+        lastRefresh = Date.now();
+        document.querySelectorAll('.webcam').forEach(link => {
+            const img = link.querySelector('img');
+            // Les que encara no s'han carregat (lazy, fora de pantalla) ja sortiran noves quan hi arribis;
+            // les que han fallat sí que es tornen a provar
+            const failed = link.classList.contains('error');
+            if (!failed && (!img.complete || img.naturalWidth === 0)) return;
+
+            // Afegim un timestamp per forçar que la imatge no vingui de la memòria cau
+            const u = new URL(img.src);
+            u.searchParams.set('_ts', Date.now());
+
+            // Es descarrega primer i només es canvia si ha arribat bé: si falla, es queda l'anterior
+            const next = new Image();
+            next.onload = () => {
+                img.src = next.src;
+                link.href = next.src;
+                link.style.setProperty('--fons', `url('${next.src}')`);
+                link.classList.remove('error');
+            };
+            next.src = u.toString();
         });
     }
-    setInterval(refreshIframes, REFRESH_MS);
+
+    // Només quan la pestanya es veu; en tornar-hi, si ha passat l'estona, es refresca de seguida
+    setInterval(() => { if (!document.hidden) refreshWebcams(); }, REFRESH_MS);
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden && Date.now() - lastRefresh >= REFRESH_MS) refreshWebcams();
+    });
 
     // Any del peu de pàgina sempre al dia
     document.getElementById('any-actual').textContent = new Date().getFullYear();
